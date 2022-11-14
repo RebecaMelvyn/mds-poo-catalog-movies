@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,8 @@ Route::get('/', function () {
     $movies = Movie::inRandomOrder()->whereNotNull('poster')->limit(12)->get();
 
     return view('home', ['movies' => $movies]);
-});
+})->name('movies');
+
+Route::get('/movie/{id}', [MovieController::class, 'show'])->name('show.movie');
+
+Route::get('/movies', [MovieController::class, 'list'])->name('list.movies');

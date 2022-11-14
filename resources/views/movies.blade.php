@@ -9,29 +9,20 @@
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <style>
-        .container {
-            margin: auto;
-            max-width: 900px;
-        }
-
-        .wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-    </style>
 </head>
+<style>
+    .container{
+        display: table-column;
+    }
+    
+</style>
 <body>
-    <a href="{{route('list.movies')}}">Top 20 films</a>
+    <h1>Top 20 premiers films</h1>
+    
     <div class="container">
-        <h1>{{ config('app.name') }}</h1>
-
         <div class="wrapper">
             @foreach ($movies as $movie)
-            <div>
-                <a href="/movie/{{ $movie->id }}">
+                <a href="/movie/{{$movie->id}}">
                     <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
                 </a>
             </div>
