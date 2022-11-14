@@ -11,8 +11,20 @@
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <style>
+    body{
+        padding-left: 10%
+    }
     .container{
         display: table-column;
+    }
+    .pagination{
+        display: inline-flex;
+        list-style-type: none;
+        margin-left: 35%;
+    
+    }
+    .pagination li{
+        margin-right: 5%
     }
     
 </style>
@@ -27,6 +39,7 @@
                 </a>
             </div>
             @endforeach
+            {{ $movies->links() }}
         </div>
     </div>
 </body>
