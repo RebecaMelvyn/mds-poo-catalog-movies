@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
-use Illuminate\Contracts\Pagination\Paginator as PaginationPaginator;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
@@ -12,7 +10,7 @@ class MovieController extends Controller
 {
     public function show(Movie $movie, $id)
     {
-        $movie = Movie::find($id);
+        $movie = Movie::where('id', $id)->first();
         return view('movie', ['movie' => $movie]);
     }
 
@@ -32,5 +30,12 @@ class MovieController extends Controller
 
 
         return view('movies', ['movies' => $movies]);
+    }
+
+    public function random()
+    {
+        $movie = Movie::inRandomOrder()->first();
+        $movie_id = $movie->id;
+        return redirect('/movie/' . $movie_id);
     }
 }

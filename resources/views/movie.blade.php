@@ -7,6 +7,7 @@
 
     <title>{{ $movie->primaryTitle }}</title>
 </head>
+
 <body>
     
         <a>id du film : {{$movie->id}}</a>
@@ -22,7 +23,11 @@
             <h3>{{ $movie->plot }}</h3>
             <h3>Note sur 10 : {{ $movie->averageRating}}</h3>
             <h3>Nombres de votes : {{ $movie->numVotes }}</h3>
-            <a href="{{route('movies')}}">retour sur les films</a>
+            <a href="{{route('movies')}}">retour page d'accueil</a>
+            <a href="{{route('list.movies')}}">retour sur les films</a>
+            <a href="/movie/random">
+                <h3>Random movie</h1>
+            </a>
         </div>
         </div>
         
