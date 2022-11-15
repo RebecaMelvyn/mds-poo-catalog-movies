@@ -24,7 +24,8 @@
     </style>
 </head>
 <body>
-    <a href="{{route('list.movies')}}">Top 20 films</a>
+    <!--<a href="{{route('list.movies')}}">Top 20 films</a>-->
+    <a href="{{route('list.movies')}}"><h3>See 20 more movies</h3></a>
     <div class="container">
         <h1>{{ config('app.name') }}</h1>
 

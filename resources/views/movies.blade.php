@@ -15,7 +15,10 @@
         padding-left: 10%
     }
     .container{
-        display: table-column;
+        display: grid;
+    }
+    .wrapper{
+        display: inline-flex;
     }
     .pagination{
         display: inline-flex;
@@ -26,21 +29,39 @@
     .pagination li{
         margin-right: 5%
     }
+
+    .poster{
+        width: 50px;
+    }
+    .filters{
+        margin-bottom: 3%
+    }
     
 </style>
 <body>
     <h1>Top 20 premiers films</h1>
-    
-    <div class="container">
-        <div class="wrapper">
-            @foreach ($movies as $movie)
-                <a href="/movie/{{$movie->id}}">
-                    <img src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
-                </a>
-            </div>
-            @endforeach
-            {{ $movies->links() }}
-        </div>
+
+    <div class="filters">
+        <a href="/movies?order_by=startYear&order=desc"><button>Dernières sortie</button></a>
+        <a href="/movies?order_by=startYear&order=asc"><button>Premières sortie</button></a>
+        <a href="/movies?order_by=averageRating&order=desc"><button>Mieux notés</button></a>
+        <a href="/movies?order_by=averageRating&order=asc"><button>Moins bien notés</button></a>
+
     </div>
+    
+        <div class="container">
+            @foreach ($movies as $movie )
+            <div class="wrapper">
+                        <a href="/movie/{{$movie->id}}">
+                            <img style="margin-bottom: 5%; margin-top: 5%" class="poster" src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+                        </a>
+                        <h2 style="margin-left: 5%;">{{ $movie->originalTitle }}</h2>
+                        <h2 style="margin-left: 5%;">{{ $movie->averageRating }} sur 10</h2>
+                    </div>
+                    @endforeach
+        </div>
+        <div class="pagination">
+            {{ $movies->appends(request()->query())->links() }}
+        </div>
 </body>
 </html>
