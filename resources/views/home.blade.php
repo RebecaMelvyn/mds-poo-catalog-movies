@@ -21,6 +21,13 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
         }
+        #random-home{
+            width: 50%;
+            height: 680px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
@@ -28,6 +35,9 @@
     <a href="/movie/random">
         <h3>Random movie</h1>
     </a>
+    
+    <iframe id="random-home" src="/movie/random"></iframe>
+
     <div class="container">
         <h1>{{ config('app.name') }}</h1>
 
