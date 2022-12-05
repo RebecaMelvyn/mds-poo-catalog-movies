@@ -1,3 +1,4 @@
+@include('layouts.header')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,6 @@
     <h1 style="text-align: center">Genres</h1>
 
     <a href="{{route('movies')}}">retour page d'accueil</a>
-
 
     <ul>
         @foreach ($genres as $genre)
