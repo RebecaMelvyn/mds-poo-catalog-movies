@@ -35,6 +35,9 @@
     <a href="/movie/random">
         <h3>Random movie</h1>
     </a>
+    <a href="{{route('genres.movies')}}">
+        <h3>Genres</h1>
+    </a>
     
     <iframe id="random-home" src="/movie/random"></iframe>
 
