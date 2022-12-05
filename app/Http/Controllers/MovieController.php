@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Movie;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 
@@ -19,17 +21,28 @@ class MovieController extends Controller
         $order_by = $request->query('order_by');
         $order = $request->query('order', 'asc');
 
-        //$query = Movie::query();
+        //$genre = $request->query('genre');
+        $genres = Genre::all();
+        $genre = $request->query('genre');
+
+        $query = Movie::query();
+
         if ($order_by && $order) {
-            $movies = Movie::orderBy($order_by, $order)->paginate(20);
-        } else {
-            $movies = Movie::paginate(20);
+            $query->orderBy($order_by, $order);
         }
 
+        if ($genre != null) {
+            //query filtre genre
+            $query->whereHas('genre', function (Builder $query) use ($genre) {
+                $query->where('label', '=', $genre);
+            });
+        }
+
+        $movies = $query->paginate(20);
         Paginator::useBootstrapFive();
 
 
-        return view('movies', ['movies' => $movies]);
+        return view('movies', ['movies' => $movies, 'genres' => $genres]);
     }
 
     public function random()

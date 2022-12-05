@@ -31,11 +31,11 @@
     </style>
 </head>
 <body>
-    <a href="{{route('list.movies')}}"><h3>See 20 more movies</h3></a>
+    <a href="{{route('list.movies')}}"><h3>See more movies</h3></a>
     <a href="/movie/random">
         <h3>Random movie</h1>
     </a>
-    <a href="{{route('genres.movies')}}">
+    <a href="/genres">
         <h3>Genres</h1>
     </a>
     

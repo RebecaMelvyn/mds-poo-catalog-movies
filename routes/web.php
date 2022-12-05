@@ -28,4 +28,6 @@ Route::get('/movie/{id}', [MovieController::class, 'show'])->name('show.movie');
 
 Route::get('/movies', [MovieController::class, 'list'])->name('list.movies');
 
-Route::get('/genres', [GenreController::class, 'list'])->name('genres.movies');
+Route::get('/movies?genre={label}', [GenreController::class, 'genreList'])->name('genre.movies');
+
+Route::get('/genres', [GenreController::class, 'list'])->name('genres.movie');

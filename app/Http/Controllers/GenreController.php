@@ -10,10 +10,14 @@ class GenreController extends Controller
 {
     //
 
-    public function list()
+    public function list(Request $request)
     {
         //$data['id'] = $id;
         $genres = Genre::all();
+        $genre = $request->query('genre');
+
+        if ($genre != null) {
+        };
         return view('genres', ['genres' => $genres]);
     }
 }

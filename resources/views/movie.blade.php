@@ -18,6 +18,7 @@
             </div>
             <div class="info">
             <h2>{{ $movie->originalTitle }}</h2>
+            
             <h3>Date de sortie : {{ $movie->startYear }}</h3>
             <h3>Durée du film : {{ $movie->runtimeMinutes }} minutes.</h3>
             <h3>{{ $movie->plot }}</h3>
